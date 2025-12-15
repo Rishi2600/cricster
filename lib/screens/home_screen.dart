@@ -4,6 +4,7 @@ import 'package:cricster/widgets/featured_videos.dart';
 import 'package:cricster/widgets/home_app_bar.dart';
 import 'package:cricster/widgets/quick_links.dart';
 import 'package:cricster/widgets/scorecard_ticker.dart';
+import 'package:cricster/screens/matches_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // Placeholder for the pages that will be shown by the BottomNavigationBar
   // For v0, we only build the Home page content.
   static final List<Widget> _widgetOptions = <Widget>[
-    const HomeContent(), // The actual scrolling content
-    const Center(child: Text('Matches Page')), // Placeholder
+    const HomeContent(),
+    const MatchesPage(),
     const Center(child: Text('Series Page')),   // Placeholder
     const Center(child: Text('Videos Page')),   // Placeholder
     const Center(child: Text('News Page')),     // Placeholder
@@ -35,7 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const HomeAppBar(),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
