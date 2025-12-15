@@ -7,6 +7,7 @@ import 'package:cricster/widgets/scorecard_ticker.dart';
 import 'package:cricster/screens/matches_page.dart';
 import 'package:cricster/screens/series_page.dart';
 import 'package:cricster/screens/videos_page.dart';
+import 'package:cricster/screens/news_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const MatchesPage(),
     const SeriesPage(),
     const VideosPage(),
-    const Center(child: Text('News Page')),     // Placeholder
+    const NewsPage()
   ];
 
   void _onItemTapped(int index) {

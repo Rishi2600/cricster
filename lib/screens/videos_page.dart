@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cricster/widgets/featured_videos.dart'; // Re-using VideoCard from here
+import 'package:cricster/widgets/featured_videos.dart';
 
 class VideosPage extends StatelessWidget {
   const VideosPage({super.key});
