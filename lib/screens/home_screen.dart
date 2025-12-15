@@ -5,9 +5,12 @@ import 'package:cricster/widgets/home_app_bar.dart';
 import 'package:cricster/widgets/quick_links.dart';
 import 'package:cricster/widgets/scorecard_ticker.dart';
 import 'package:cricster/screens/matches_page.dart';
+import 'package:cricster/screens/series_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+//we made this widget stateful because we need to keep the bottom Navbar state persistent.
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeContent(),
     const MatchesPage(),
-    const Center(child: Text('Series Page')),   // Placeholder
+    const SeriesPage(),
     const Center(child: Text('Videos Page')),   // Placeholder
     const Center(child: Text('News Page')),     // Placeholder
   ];
