@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:cricster/widgets/ad_banner.dart';
+import 'package:cricster/widgets/featured_videos.dart';
+import 'package:cricster/widgets/home_app_bar.dart';
+import 'package:cricster/widgets/quick_links.dart';
+import 'package:cricster/widgets/scorecard_ticker.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  // Placeholder for the pages that will be shown by the BottomNavigationBar
+  // For v0, we only build the Home page content.
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomeContent(), // The actual scrolling content
+    const Center(child: Text('Matches Page')), // Placeholder
+    const Center(child: Text('Series Page')),   // Placeholder
+    const Center(child: Text('Videos Page')),   // Placeholder
+    const Center(child: Text('News Page')),     // Placeholder
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const HomeAppBar(),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.sports_cricket), label: 'Matches'),
+          BottomNavigationBarItem(icon: Icon(Icons.emoji_events), label: 'Series'),
+          BottomNavigationBarItem(icon: Icon(Icons.videocam), label: 'Videos'),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'News'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+// This widget contains the scrollable content for the home tab
+class HomeContent extends StatelessWidget {
+  const HomeContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8),
+          const ScorecardTicker(),
+          const QuickLinks(),
+          const AdBanner(),
+          const FeaturedVideos(),
+          const SizedBox(height: 20), // Some padding at the bottom
+        ],
+      ),
+    );
+  }
+}
