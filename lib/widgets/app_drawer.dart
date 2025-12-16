@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cricster/screens/placeholder_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -10,7 +11,6 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          // Drawer Header
           _buildDrawerHeader(context),
 
           // Group 1: Account Management
@@ -160,13 +160,13 @@ class AppDrawer extends StatelessWidget {
   // Navigation logic stub
   void _navigateTo(BuildContext context, String pageName) {
     Navigator.of(context).pop(); // Close the drawer first
-    // TODO: Replace with actual navigation to feature pages
-    // For now, we can show a snackbar to confirm the tap
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Navigating to $pageName'),
-        duration: const Duration(seconds: 1),
-      ),
-    );
+
+    Future.delayed(const Duration(milliseconds: 250), () {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => PlaceholderPage(pageTitle: pageName),
+        ),
+      );
+    });
   }
 }
