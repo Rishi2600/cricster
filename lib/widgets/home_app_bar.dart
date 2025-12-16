@@ -9,11 +9,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: const Icon(Icons.menu),
         onPressed: () {
-          // TODO: Implement drawer functionality
+          Scaffold.of(context).openDrawer();
         },
       ),
       title: Text(
-        'cricster', // Using Text to simulate the logo for now
+        'cricster',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 24,

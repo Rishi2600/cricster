@@ -8,6 +8,7 @@ import 'package:cricster/screens/matches_page.dart';
 import 'package:cricster/screens/series_page.dart';
 import 'package:cricster/screens/videos_page.dart';
 import 'package:cricster/screens/news_page.dart';
+import 'package:cricster/widgets/app_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  // Placeholder for the pages that will be shown by the BottomNavigationBar
-  // For v0, we only build the Home page content.
+  // BottomNavigationBar widgets
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeContent(),
     const MatchesPage(),
@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const HomeAppBar(),
+      drawer: const AppDrawer(),
       body: IndexedStack(
         index: _selectedIndex,
         children: _widgetOptions,
