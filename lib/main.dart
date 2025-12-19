@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cricster/screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
   runApp(const MyApp());
 }
 
@@ -15,10 +22,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF181818), // Main dark background
-        primaryColor: const Color(0xFF00BFA5), // A teal/green accent like Cricbuzz
-        cardColor: const Color(0xFF222222), // Slightly lighter background for cards
-        fontFamily: 'Roboto', // A clean, standard font
+        scaffoldBackgroundColor: const Color(0xFF181818),
+        primaryColor: const Color(0xFF00BFA5),
+        cardColor: const Color(0xFF222222),
+        fontFamily: 'Roboto',
         textTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.white),
           bodyMedium: TextStyle(color: Colors.white70),
@@ -26,7 +33,7 @@ class MyApp extends StatelessWidget {
           titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF2D2D2D), // App bar color
+          backgroundColor: Color(0xFF2D2D2D),
           elevation: 4.0,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
